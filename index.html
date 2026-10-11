@@ -8,7 +8,7 @@
 
 <body>
 
-    <!-- Floating Navigation Bar -->
+    <!-- NAVIGATION BAR -->
     <nav class="navbar">
         <div class="nav-left">
             <span class="nav-title">Andre Miranda</span>
@@ -17,14 +17,13 @@
 
         <div class="nav-right">
             <a href="#self">Self‑Assessment</a>
-            <a href="#review">Code Review</a>
             <a href="#enhanced">Enhanced Artifacts</a>
             <a href="#original">Original Artifacts</a>
             <a href="#testing">Testing Suite</a>
         </div>
     </nav>
 
-    <!-- Hero Banner -->
+    <!-- HERO -->
     <header class="hero">
         <h1>CS 499 ePortfolio</h1>
         <p>A polished showcase of software engineering, algorithms, and database mastery.</p>
@@ -32,45 +31,53 @@
 
     <main class="container">
 
+        <!-- SELF ASSESSMENT -->
         <section id="self" class="card">
             <h2>Professional Self‑Assessment</h2>
             <p>A high‑level introduction to my background, strengths, and the skills demonstrated throughout the CS 499 capstone.</p>
-            <a class="button" href="#" target="_blank">View Self‑Assessment</a>
+            <a class="button" href="artifacts/docs/Self_Assessment.pdf" target="_blank">View Self‑Assessment</a>
         </section>
 
-        <section id="review" class="card">
-            <h2>Code Review Video</h2>
-            <p>A walkthrough of the original artifact, its functionality, and the enhancement plan.</p>
-            <a class="button" href="#" target="_blank">Watch Code Review</a>
-        </section>
-
+        <!-- ENHANCED ARTIFACTS -->
         <section id="enhanced" class="card">
             <h2>Enhanced Artifacts</h2>
 
-            <h3>Software Engineering & Design</h3>
-            <p>Refactored CRUD module with custom exceptions, logging, environment‑based credentials, schema validation, and improved maintainability.</p>
-            <a class="button" href="#" target="_blank">Enhanced CRUD Module</a>
+            <h3>Enhanced CRUD Module</h3>
+            <p>Refactored CRUD module with custom exceptions, logging, validation, indexing, and secure authentication.</p>
+            <a class="button" href="artifacts/enhanced/CRUD_Python_Module.py" target="_blank">Enhanced CRUD Module</a>
 
-            <h3>Algorithms & Data Structures</h3>
-            <p>Rescue Suitability Scoring Engine featuring weighted scoring, caching, compiled regex, normalization, and ranking logic.</p>
-            <a class="button" href="#" target="_blank">Scoring Engine</a>
+            <h3>Enhanced Dashboard</h3>
+            <p>Interactive Dash dashboard with rescue filters, map integration, analytics, KPIs, and normalized breed scoring.</p>
+            <a class="button" href="artifacts/enhanced/Dashboard.ipynb" target="_blank">Enhanced Dashboard</a>
 
-            <h3>Databases</h3>
-            <p>MongoDB aggregation pipelines, indexing, schema validation, secure credential management, and dashboard analytics.</p>
-            <a class="button" href="#" target="_blank">Enhanced Dashboard</a>
+            <h3>Rescue Scoring Engine</h3>
+            <p>Weighted scoring engine using regex normalization, caching, and multi‑factor suitability scoring.</p>
+            <a class="button" href="artifacts/enhanced/rescue_scoring.py" target="_blank">Scoring Engine</a>
+
+            <h3>Login Page</h3>
+            <p>Secure credential retrieval for MongoDB authentication.</p>
+            <a class="button" href="artifacts/enhanced/login_page.py" target="_blank">Login Page</a>
+
+            <h3>Enhanced Test Suite</h3>
+            <p>Full coverage test suite validating CRUD operations, scoring engine, aggregation pipelines, and edge cases.</p>
+            <a class="button" href="artifacts/enhanced/Test_Script.ipynb" target="_blank">Enhanced Test Script</a>
         </section>
 
+        <!-- ORIGINAL ARTIFACTS -->
         <section id="original" class="card">
             <h2>Original Artifacts</h2>
             <p>These files represent the starting point before enhancements.</p>
-            <a class="button" href="#" target="_blank">Original CRUD Module</a>
-            <a class="button" href="#" target="_blank">Original Dashboard</a>
+
+            <a class="button" href="artifacts/original/CRUD_original.py" target="_blank">Original CRUD Module</a>
+            <a class="button" href="artifacts/original/Dashboard_original.ipynb" target="_blank">Original Dashboard</a>
+            <a class="button" href="artifacts/original/Test_Script_original.ipynb" target="_blank">Original Test Script</a>
         </section>
 
+        <!-- TESTING SUITE -->
         <section id="testing" class="card">
             <h2>Testing Suite</h2>
             <p>Full coverage test suite validating CRUD operations, scoring engine, aggregation pipelines, and edge cases.</p>
-            <a class="button" href="#" target="_blank">View Test Suite</a>
+            <a class="button" href="artifacts/enhanced/Test_Script.ipynb" target="_blank">View Enhanced Test Suite</a>
         </section>
 
     </main>
