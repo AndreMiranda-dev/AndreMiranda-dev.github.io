@@ -41,8 +41,9 @@ body.dark .navbar {
 .nav-left {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 6px;
 }
+
 
 .nav-title {
     font-size: 18px;
