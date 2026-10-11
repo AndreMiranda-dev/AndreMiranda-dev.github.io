@@ -41,7 +41,7 @@ body.dark .navbar {
 .nav-left {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 16px;
 }
 
 .nav-title {
@@ -66,11 +66,13 @@ body.dark .navbar {
     opacity: 0.6;
 }
 
+/* Dark Mode Toggle */
 .dark-toggle {
     background: none;
     border: none;
-    font-size: 20px;
+    font-size: 22px;
     cursor: pointer;
+    color: inherit;
 }
 
 /* ---------------------------------------------------------
