@@ -73,50 +73,8 @@ body.dark .navbar {
     cursor: pointer;
 }
 
-/* Sidebar Toggle ALWAYS visible */
-.sidebar-toggle {
-    background: none;
-    border: none;
-    font-size: 26px;
-    cursor: pointer;
-}
-
 /* ---------------------------------------------------------
-   SIDEBAR (MOBILE ONLY)
---------------------------------------------------------- */
-.sidebar {
-    display: none; /* hidden on desktop */
-    position: fixed;
-    top: 58px;
-    right: -260px;
-    width: 260px;
-    height: 100%;
-    background: #ffffff;
-    backdrop-filter: blur(20px);
-    box-shadow: -4px 0 12px rgba(0,0,0,0.1);
-    padding: 20px;
-    transition: right 0.3s ease;
-    z-index: 998;
-}
-
-body.dark .sidebar {
-    background: #2c2c2e;
-}
-
-.sidebar.open {
-    right: 0;
-}
-
-.sidebar a {
-    display: block;
-    margin-bottom: 20px;
-    text-decoration: none;
-    color: inherit;
-    font-size: 18px;
-}
-
-/* ---------------------------------------------------------
-   HERO BANNER WITH ANIMATED GRADIENT
+   HERO BANNER
 --------------------------------------------------------- */
 .hero {
     margin-top: 58px;
@@ -125,6 +83,11 @@ body.dark .sidebar {
     background: linear-gradient(120deg, #dfe9f3, #ffffff, #f5f5f7);
     background-size: 300% 300%;
     animation: gradientMove 12s ease infinite;
+    transition: background 0.3s ease;
+}
+
+body.dark .hero {
+    background: linear-gradient(120deg, #2c2c2e, #1c1c1e, #2c2c2e);
 }
 
 @keyframes gradientMove {
@@ -137,11 +100,16 @@ body.dark .sidebar {
     font-size: 48px;
     font-weight: 700;
     margin-bottom: 10px;
+    color: inherit;
 }
 
 .hero p {
     font-size: 20px;
     color: #6e6e73;
+}
+
+body.dark .hero p {
+    color: #d1d1d6;
 }
 
 /* ---------------------------------------------------------
@@ -159,7 +127,7 @@ body.dark .sidebar {
     padding: 30px;
     margin-bottom: 30px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
 }
 
 body.dark .card {
@@ -212,14 +180,6 @@ footer {
     font-size: 14px;
 }
 
-/* ---------------------------------------------------------
-   RESPONSIVE DESIGN
---------------------------------------------------------- */
-@media (max-width: 900px) {
-    .nav-right a {
-        display: none;
-    }
-    .sidebar {
-        display: block;
-    }
+body.dark footer {
+    color: #d1d1d6;
 }
