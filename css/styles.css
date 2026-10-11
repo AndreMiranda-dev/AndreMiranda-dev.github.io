@@ -1,6 +1,4 @@
-/* ---------------------------------------------------------
-   GLOBAL STYLE
---------------------------------------------------------- */
+/* GLOBAL */
 body {
     margin: 0;
     padding: 0;
@@ -15,61 +13,59 @@ body.dark {
     color: #f5f5f7;
 }
 
-/* ---------------------------------------------------------
-   NAVIGATION BAR
---------------------------------------------------------- */
+/* NAVBAR */
 .navbar {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(255,255,255,0.85);
+    background: rgba(255,255,255,0.9);
     backdrop-filter: blur(20px);
-    padding: 10px 16px;
+    padding: 8px 12px;
     display: flex;
-    flex-wrap: wrap;            /* ⭐ FIX: allows wrapping */
+    flex-wrap: wrap;          /* allow wrapping */
     align-items: center;
-    gap: 12px;                  /* ⭐ FIX: reduces spacing */
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     z-index: 999;
+    box-sizing: border-box;
 }
 
 body.dark .navbar {
-    background: rgba(40,40,40,0.85);
+    background: rgba(40,40,40,0.9);
 }
 
 .nav-left {
     display: flex;
     align-items: center;
-    gap: 12px;
-    flex-shrink: 0;             /* ⭐ FIX: prevents shrinking */
+    gap: 8px;
+    flex-shrink: 0;
 }
 
 .nav-title {
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 600;
 }
 
 .dark-toggle {
     background: none;
     border: none;
-    font-size: 22px;
+    font-size: 20px;
     cursor: pointer;
     color: inherit;
 }
 
+/* RIGHT NAV LINKS */
 .nav-right {
     display: flex;
-    flex-wrap: wrap;            /* ⭐ FIX: allows wrapping */
-    gap: 10px;                  /* ⭐ FIX: tighter spacing */
-    justify-content: flex-end;
-    flex-grow: 1;               /* ⭐ FIX: allows shrinking */
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-left: auto;
 }
 
 .nav-right a {
     text-decoration: none;
     color: inherit;
-    font-size: 14px;            /* ⭐ FIX: slightly smaller */
-    white-space: nowrap;        /* keeps each link intact */
+    font-size: 13px;
+    padding: 2px 4px;
     transition: opacity 0.2s ease;
 }
 
@@ -77,12 +73,10 @@ body.dark .navbar {
     opacity: 0.6;
 }
 
-/* ---------------------------------------------------------
-   HERO BANNER
---------------------------------------------------------- */
+/* HERO */
 .hero {
-    margin-top: 90px;
-    padding: 120px 20px;
+    margin-top: 70px;
+    padding: 100px 20px;
     text-align: center;
     background: linear-gradient(120deg, #dfe9f3, #ffffff, #f5f5f7);
     background-size: 300% 300%;
@@ -101,7 +95,7 @@ body.dark .hero {
 }
 
 .hero h1 {
-    font-size: 42px;
+    font-size: 40px;
     font-weight: 700;
     margin-bottom: 10px;
     color: inherit;
@@ -116,9 +110,7 @@ body.dark .hero p {
     color: #d1d1d6;
 }
 
-/* ---------------------------------------------------------
-   CONTAINER + CARDS
---------------------------------------------------------- */
+/* CONTENT */
 .container {
     max-width: 1100px;
     margin: 0 auto;
@@ -153,9 +145,7 @@ h3 {
     margin-top: 20px;
 }
 
-/* ---------------------------------------------------------
-   BUTTONS
---------------------------------------------------------- */
+/* BUTTONS */
 .button {
     display: inline-block;
     padding: 10px 20px;
@@ -174,9 +164,7 @@ h3 {
     background: #0062cc;
 }
 
-/* ---------------------------------------------------------
-   FOOTER
---------------------------------------------------------- */
+/* FOOTER */
 footer {
     text-align: center;
     padding: 40px 0;
