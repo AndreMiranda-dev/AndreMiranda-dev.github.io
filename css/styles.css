@@ -73,9 +73,8 @@ body.dark .navbar {
     cursor: pointer;
 }
 
-/* Mobile Sidebar Toggle */
+/* Sidebar Toggle ALWAYS visible */
 .sidebar-toggle {
-    display: none;
     background: none;
     border: none;
     font-size: 26px;
@@ -217,11 +216,8 @@ footer {
    RESPONSIVE DESIGN
 --------------------------------------------------------- */
 @media (max-width: 900px) {
-    .nav-right {
+    .nav-right a {
         display: none;
-    }
-    .sidebar-toggle {
-        display: block;
     }
     .sidebar {
         display: block;
