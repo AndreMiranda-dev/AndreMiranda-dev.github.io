@@ -38,4 +38,65 @@ The primary artifact enhanced throughout the capstone is the **Grazioso Salvare 
 ---
 
 ## 📁 Repository Structure
+index.html
+css/
+artifacts/
+original/
+enhanced/
+narratives/
+self-assessment/
+media/
+assets/
 
+
+---
+
+## 🌐 Live ePortfolio
+
+Visit the published GitHub Pages site:
+
+**https://AndreMiranda-dev.github.io**
+
+---
+
+## 🎥 Code Review Video
+
+A full walkthrough of the original artifact, analysis, and enhancement plan is included in the ePortfolio.
+
+---
+
+## 📄 Narratives & Self‑Assessment
+
+Each enhancement includes a detailed narrative explaining:
+- Why the artifact was selected  
+- What enhancements were made  
+- Which course outcomes were met  
+- What challenges were encountered  
+- What skills were demonstrated  
+
+The professional self‑assessment serves as the introduction to the portfolio.
+
+---
+
+## 🧪 Testing
+
+A comprehensive test suite validates:
+- CRUD operations  
+- Defensive programming  
+- Scoring engine correctness  
+- Aggregation pipeline behavior  
+- Edge cases and malformed data  
+
+---
+
+## 📬 Contact
+
+For questions or collaboration opportunities, feel free to reach out.
+
+Andre Miranda
+Charlotte, NC
+
+
+---
+
+# End of README
