@@ -1,5 +1,5 @@
 /* ---------------------------------------------------------
-   GLOBAL APPLE STYLE
+   GLOBAL STYLE
 --------------------------------------------------------- */
 body {
     margin: 0;
@@ -10,7 +10,6 @@ body {
     transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* Dark Mode */
 body.dark {
     background: #1c1c1e;
     color: #f5f5f7;
@@ -23,16 +22,15 @@ body.dark {
     position: fixed;
     top: 0;
     width: 100%;
-    min-height: 58px;
     background: rgba(255,255,255,0.85);
     backdrop-filter: blur(20px);
+    padding: 10px 16px;
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;            /* ⭐ FIX: allows wrapping */
     align-items: center;
-    padding: 0 16px;
+    gap: 12px;                  /* ⭐ FIX: reduces spacing */
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     z-index: 999;
-    box-sizing: border-box;
 }
 
 body.dark .navbar {
@@ -43,48 +41,47 @@ body.dark .navbar {
     display: flex;
     align-items: center;
     gap: 12px;
-    flex-shrink: 0;
+    flex-shrink: 0;             /* ⭐ FIX: prevents shrinking */
 }
 
 .nav-title {
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 600;
+}
+
+.dark-toggle {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: inherit;
 }
 
 .nav-right {
     display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
+    flex-wrap: wrap;            /* ⭐ FIX: allows wrapping */
+    gap: 10px;                  /* ⭐ FIX: tighter spacing */
     justify-content: flex-end;
+    flex-grow: 1;               /* ⭐ FIX: allows shrinking */
 }
 
 .nav-right a {
     text-decoration: none;
     color: inherit;
-    font-size: 14px;
+    font-size: 14px;            /* ⭐ FIX: slightly smaller */
+    white-space: nowrap;        /* keeps each link intact */
     transition: opacity 0.2s ease;
-    white-space: nowrap;
 }
 
 .nav-right a:hover {
     opacity: 0.6;
 }
 
-/* Dark Mode Toggle */
-.dark-toggle {
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    color: inherit;
-}
-
 /* ---------------------------------------------------------
    HERO BANNER
 --------------------------------------------------------- */
 .hero {
-    margin-top: 70px;
+    margin-top: 90px;
     padding: 120px 20px;
     text-align: center;
     background: linear-gradient(120deg, #dfe9f3, #ffffff, #f5f5f7);
@@ -189,19 +186,4 @@ footer {
 
 body.dark footer {
     color: #d1d1d6;
-}
-
-/* ---------------------------------------------------------
-   BASIC RESPONSIVENESS
---------------------------------------------------------- */
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
-
-    .nav-right {
-        justify-content: flex-start;
-    }
 }
