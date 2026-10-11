@@ -23,20 +23,8 @@
 
             <!-- Dark Mode Toggle -->
             <button id="darkToggle" class="dark-toggle">◐</button>
-
-            <!-- Sidebar Toggle -->
-            <button class="sidebar-toggle" id="sidebarToggle">☰</button>
         </div>
     </nav>
-
-    <!-- Mobile Sidebar -->
-    <aside class="sidebar" id="sidebar">
-        <a href="#self">Self‑Assessment</a>
-        <a href="#review">Code Review</a>
-        <a href="#enhanced">Enhanced Artifacts</a>
-        <a href="#original">Original Artifacts</a>
-        <a href="#testing">Testing Suite</a>
-    </aside>
 
     <!-- Hero Banner -->
     <header class="hero">
@@ -103,14 +91,6 @@
         const toggle = document.getElementById("darkToggle");
         toggle.addEventListener("click", () => {
             document.body.classList.toggle("dark");
-        });
-
-        // Sidebar Toggle
-        const sidebarToggle = document.getElementById("sidebarToggle");
-        const sidebar = document.getElementById("sidebar");
-
-        sidebarToggle.addEventListener("click", () => {
-            sidebar.classList.toggle("open");
         });
     </script>
 
