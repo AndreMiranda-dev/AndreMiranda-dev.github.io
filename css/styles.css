@@ -44,12 +44,6 @@ body.dark .navbar {
     gap: 12px;
 }
 
-.nav-logo {
-    height: 32px;
-    width: auto;
-    border-radius: 6px;
-}
-
 .nav-title {
     font-size: 18px;
     font-weight: 600;
