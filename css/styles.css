@@ -1,5 +1,5 @@
 /* ---------------------------------------------------------
-   GLOBAL STYLE
+   GLOBAL APPLE STYLE
 --------------------------------------------------------- */
 body {
     margin: 0;
@@ -41,17 +41,21 @@ body.dark .navbar {
 .nav-left {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 10px;
 }
-
 
 .nav-title {
     font-size: 18px;
     font-weight: 600;
 }
 
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
 .nav-right a {
-    margin-left: 20px;
     text-decoration: none;
     color: inherit;
     font-size: 15px;
@@ -63,7 +67,6 @@ body.dark .navbar {
 }
 
 .dark-toggle {
-    margin-left: 20px;
     background: none;
     border: none;
     font-size: 20px;
@@ -80,9 +83,10 @@ body.dark .navbar {
 }
 
 /* ---------------------------------------------------------
-   SIDEBAR (MOBILE)
+   SIDEBAR (MOBILE ONLY)
 --------------------------------------------------------- */
 .sidebar {
+    display: none; /* hidden on desktop */
     position: fixed;
     top: 58px;
     right: -260px;
@@ -217,6 +221,9 @@ footer {
         display: none;
     }
     .sidebar-toggle {
+        display: block;
+    }
+    .sidebar {
         display: block;
     }
 }
