@@ -94,8 +94,6 @@ A comprehensive test suite validates:
 For questions or collaboration opportunities, feel free to reach out.
 
 Andre Miranda
-Charlotte, NC
-
 
 ---
 
