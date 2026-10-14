@@ -4,6 +4,6 @@
 # FIXME: needs to create a login page
 def get_credentials() -> tuple[str, str]:
     """Return hardcoded MongoDB credentials."""
-    username = "aacuser"
-    password = "CS340AndreMiranda"
+    username = "XXXXXXXXXX"
+    password = "XXXXXXXXXX"
     return username, password
