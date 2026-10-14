@@ -21,7 +21,7 @@ body.dark {
 
 /* Offset anchor scrolling so sections don't hide under navbar */
 section {
-    scroll-margin-top: 200px;
+    scroll-margin-top: 160px;
 }
 
 /* ---------------------------------------------------------
@@ -220,7 +220,7 @@ body.dark .skill-box {
 }
 
 /* ---------------------------------------------------------
-   BACK TO TOP BUTTON (MATCHES .button STYLE)
+   BACK TO TOP BUTTON
 --------------------------------------------------------- */
 #backToTop {
     position: fixed;
