@@ -1,5 +1,5 @@
-# CRUD Python
-# CRUD_Python_Module.py
+# This module provides secure CRUD operations and database analytics for the AAC animals collection
+# Created by Andre Miranda
 
 import os
 import logging
@@ -45,8 +45,8 @@ class AnimalShelterRescueFilterError(AnimalShelterError):
     pass
 
 
-class AnimalShelterAnalyticsError(AnimalShelterError):
-    """Raised when aggregation/analytics operations fail."""
+class AnimalShelterAggregationError(AnimalShelterError):
+    """Raised when aggregation pipeline operations fail."""
     pass
 
 
@@ -59,7 +59,8 @@ class AnimalShelter(object):
     - Query validation
     - CRUD operations
     - Rescue filter queries
-    - Database analytics (aggregation pipelines, indexes, validation)
+    - Aggregation pipelines
+    - Index and schema management
     """
 
     # ---------------------------------------------------------
@@ -90,25 +91,20 @@ class AnimalShelter(object):
         "list_field",
         "dict_field",
         "numeric_field",
-        "rescue_score",  # allow scoring field if persisted later
+        "rescue_score",
     }
 
     SAFE_OPERATORS = {
         "$in", "$gte", "$lte", "$gt", "$lt", "$eq", "$ne", "$regex", "$options"
     }
 
-    INDEX_FIELDS = [
-        "breed",
-        "animal_type",
-        "outcome_type",
-        "age_upon_outcome_in_weeks",
-    ]
-
     # ---------------------------------------------------------
     # INITIALIZATION
     # ---------------------------------------------------------
+    # This function initializes the MongoDB connection and applies schema/index enhancements
+    # Created by Andre Miranda
     def __init__(self, username: str, password: str):
-        """Initialize MongoDB connection and authenticate."""
+        """Initialize MongoDB connection, authenticate, and apply schema/index enhancements."""
         if not username or not isinstance(username, str):
             raise AnimalShelterValidationError("Username must be a non-empty string.")
 
@@ -137,9 +133,9 @@ class AnimalShelter(object):
                 username, self.DB_NAME, self.COLLECTION_NAME
             )
 
-            # Ensure indexes and schema validation are applied
+            # Apply schema validation and indexes as part of database enhancement
+            self._apply_schema_validation()
             self._ensure_indexes()
-            self._ensure_schema_validation()
 
         except PyMongoError as e:
             logger.exception("Error connecting to MongoDB")
@@ -148,6 +144,8 @@ class AnimalShelter(object):
     # ---------------------------------------------------------
     # CONNECTION HEALTH CHECK
     # ---------------------------------------------------------
+    # This function checks if the MongoDB connection is healthy
+    # Created by Andre Miranda
     def is_connected(self) -> bool:
         """Return True if the MongoDB connection is active."""
         try:
@@ -156,6 +154,8 @@ class AnimalShelter(object):
         except Exception:
             return False
 
+    # This function returns basic health information for diagnostics
+    # Created by Andre Miranda
     def health(self) -> Dict[str, Any]:
         """Return basic health information about the database connection."""
         return {
@@ -167,8 +167,66 @@ class AnimalShelter(object):
         }
 
     # ---------------------------------------------------------
+    # INTERNAL DATABASE ENHANCEMENTS
+    # ---------------------------------------------------------
+    # This function applies MongoDB JSON schema validation to the animals collection
+    # Created by Andre Miranda
+    def _apply_schema_validation(self) -> None:
+        """Apply JSON schema validation to the animals collection."""
+        try:
+            validator = {
+                "$jsonSchema": {
+                    "bsonType": "object",
+                    "required": ["name", "animal_type", "breed", "outcome_type"],
+                    "properties": {
+                        "name": {"bsonType": "string"},
+                        "animal_type": {"bsonType": "string"},
+                        "breed": {"bsonType": "string"},
+                        "outcome_type": {"bsonType": "string"},
+                        "age_upon_outcome_in_weeks": {"bsonType": ["int", "double", "null"]},
+                    }
+                }
+            }
+
+            # Example comment: use collMod to update existing collection validator
+            self.database.command({
+                "collMod": self.COLLECTION_NAME,
+                "validator": validator,
+                "validationLevel": "moderate"
+            })
+
+            logger.info(
+                "Schema validation applied to collection '%s'.",
+                self.COLLECTION_NAME
+            )
+        except PyMongoError:
+            # Example comment: schema validation may already exist or collMod may not be allowed
+            logger.warning("Schema validation could not be applied (collMod may not be available).")
+
+    # This function ensures indexes on frequently queried fields
+    # Created by Andre Miranda
+    def _ensure_indexes(self) -> None:
+        """Ensure indexes on common query fields for performance."""
+        index_fields = [
+            "breed",
+            "animal_type",
+            "outcome_type",
+            "age_upon_outcome_in_weeks",
+            "sex_upon_outcome",
+        ]
+
+        for field in index_fields:
+            try:
+                self.collection.create_index(field)
+                logger.info("Index ensured on field: %s", field)
+            except PyMongoError:
+                logger.warning("Failed to create index on field: %s", field)
+
+    # ---------------------------------------------------------
     # INTERNAL VALIDATION HELPERS
     # ---------------------------------------------------------
+    # This function validates query dictionaries and safe operators
+    # Created by Andre Miranda
     def _validate_query(self, query: Dict[str, Any]):
         """Validate query fields and safe operators."""
         if not isinstance(query, dict):
@@ -191,6 +249,8 @@ class AnimalShelter(object):
                     if op not in self.SAFE_OPERATORS:
                         raise AnimalShelterValidationError(f"Operator '{op}' is not allowed.")
 
+    # This function validates update dictionaries for allowed fields
+    # Created by Andre Miranda
     def _validate_update_values(self, new_values: Dict[str, Any]):
         """Validate update fields and safe operators."""
         if not isinstance(new_values, dict):
@@ -207,75 +267,25 @@ class AnimalShelter(object):
                 raise AnimalShelterValidationError(f"Field '{key}' is not allowed in updates.")
 
     # ---------------------------------------------------------
-    # INDEX MANAGEMENT
-    # ---------------------------------------------------------
-    def _ensure_indexes(self):
-        """
-        Create indexes on frequently queried fields to improve performance.
-
-        Indexes:
-        - breed
-        - animal_type
-        - outcome_type
-        - age_upon_outcome_in_weeks
-        """
-        try:
-            for field in self.INDEX_FIELDS:
-                logger.info("Ensuring index on field: %s", field)
-                self.collection.create_index(field)
-        except PyMongoError as e:
-            logger.exception("Error creating indexes")
-            raise AnimalShelterAnalyticsError("Failed to create indexes.") from e
-
-    # ---------------------------------------------------------
-    # SCHEMA VALIDATION
-    # ---------------------------------------------------------
-    def _ensure_schema_validation(self):
-        """
-        Apply MongoDB JSON schema validation to enforce basic data integrity.
-
-        Required fields:
-        - name (string)
-        - animal_type (string)
-        - outcome_type (string)
-        """
-        validator = {
-            "$jsonSchema": {
-                "bsonType": "object",
-                "required": ["name", "animal_type", "outcome_type"],
-                "properties": {
-                    "name": {"bsonType": "string"},
-                    "animal_type": {"bsonType": "string"},
-                    "breed": {"bsonType": ["string", "null"]},
-                    "age_upon_outcome_in_weeks": {"bsonType": ["int", "double", "null"]},
-                    "outcome_type": {"bsonType": "string"},
-                    "location_lat": {"bsonType": ["double", "null"]},
-                    "location_long": {"bsonType": ["double", "null"]},
-                }
-            }
-        }
-
-        try:
-            logger.info("Applying schema validation to collection '%s'", self.COLLECTION_NAME)
-            self.database.command({
-                "collMod": self.COLLECTION_NAME,
-                "validator": validator,
-                "validationLevel": "moderate",
-                "validationAction": "warn",
-            })
-        except PyMongoError as e:
-            logger.exception("Error applying schema validation")
-            raise AnimalShelterAnalyticsError("Failed to apply schema validation.") from e
-
-    # ---------------------------------------------------------
     # CRUD OPERATIONS
     # ---------------------------------------------------------
+    # This function handles document creation in the animals collection
+    # Created by Andre Miranda
     def create(self, data: Dict[str, Any]) -> bool:
         """Insert a document into the collection."""
         self._validate_update_values(data)
 
         if "name" not in data or not isinstance(data["name"], str):
             raise AnimalShelterValidationError("Missing required field: 'name' (must be a string).")
+
+        if "animal_type" not in data or not isinstance(data["animal_type"], str):
+            raise AnimalShelterValidationError("Missing required field: 'animal_type' (must be a string).")
+
+        if "breed" not in data or not isinstance(data["breed"], str):
+            raise AnimalShelterValidationError("Missing required field: 'breed' (must be a string).")
+
+        if "outcome_type" not in data or not isinstance(data["outcome_type"], str):
+            raise AnimalShelterValidationError("Missing required field: 'outcome_type' (must be a string).")
 
         try:
             result = self.collection.insert_one(data)
@@ -285,6 +295,10 @@ class AnimalShelter(object):
             logger.exception("Error inserting document")
             raise AnimalShelterCrudError("Failed to insert document.") from e
 
+        # Example comment: create returns True/False based on acknowledgment
+
+    # This function handles reading documents based on a query
+    # Created by Andre Miranda
     def read(self, query: Dict[str, Any]) -> List[Dict[str, Any]]:
         """Read documents matching a query."""
         self._validate_query(query)
@@ -294,6 +308,8 @@ class AnimalShelter(object):
             logger.exception("Error reading documents")
             raise AnimalShelterCrudError("Failed to read documents.") from e
 
+    # This function returns all documents in the animals collection
+    # Created by Andre Miranda
     def read_all(self) -> List[Dict[str, Any]]:
         """Return all documents."""
         try:
@@ -302,6 +318,8 @@ class AnimalShelter(object):
             logger.exception("Error reading all documents")
             raise AnimalShelterCrudError("Failed to read all documents.") from e
 
+    # This function updates documents matching a query
+    # Created by Andre Miranda
     def update(self, query: Dict[str, Any], new_values: Dict[str, Any]) -> int:
         """Update documents matching a query."""
         self._validate_query(query)
@@ -315,6 +333,8 @@ class AnimalShelter(object):
             logger.exception("Error updating documents")
             raise AnimalShelterCrudError("Failed to update documents.") from e
 
+    # This function deletes documents matching a query
+    # Created by Andre Miranda
     def delete(self, query: Dict[str, Any]) -> int:
         """Delete documents matching a query."""
         self._validate_query(query)
@@ -329,6 +349,8 @@ class AnimalShelter(object):
     # ---------------------------------------------------------
     # RESCUE FILTER QUERIES
     # ---------------------------------------------------------
+    # This function handles rescue filtering for water rescue
+    # Created by Andre Miranda
     def filter_water_rescue(self) -> List[Dict[str, Any]]:
         """Return dogs suitable for Water Rescue using regex breed matching."""
         try:
@@ -341,6 +363,8 @@ class AnimalShelter(object):
         except Exception as e:
             raise AnimalShelterRescueFilterError("Water rescue filter failed.") from e
 
+    # This function handles rescue filtering for mountain/wilderness rescue
+    # Created by Andre Miranda
     def filter_mountain_rescue(self) -> List[Dict[str, Any]]:
         """Return dogs suitable for Mountain/Wilderness Rescue using regex breed matching."""
         try:
@@ -353,6 +377,8 @@ class AnimalShelter(object):
         except Exception as e:
             raise AnimalShelterRescueFilterError("Mountain rescue filter failed.") from e
 
+    # This function handles rescue filtering for disaster/tracking rescue
+    # Created by Andre Miranda
     def filter_disaster_rescue(self) -> List[Dict[str, Any]]:
         """Return dogs suitable for Disaster/Tracking Rescue using regex breed matching."""
         try:
@@ -369,103 +395,79 @@ class AnimalShelter(object):
             raise AnimalShelterRescueFilterError("Disaster rescue filter failed.") from e
 
     # ---------------------------------------------------------
-    # AGGREGATION PIPELINES (DATABASE ANALYTICS)
+    # AGGREGATION PIPELINES (DATABASE ENHANCEMENT)
     # ---------------------------------------------------------
-    def aggregate_breed_distribution(self, match_filter: Dict[str, Any] | None = None) -> List[Dict[str, Any]]:
-        """
-        Return breed distribution using a MongoDB aggregation pipeline.
-
-        Optional:
-        - match_filter: a validated query dict to restrict the dataset (e.g., only dogs).
-        """
+    # This function returns breed distribution using a MongoDB aggregation pipeline
+    # Created by Andre Miranda
+    def aggregate_breed_distribution(self) -> List[Dict[str, Any]]:
+        """Aggregate breed distribution counts."""
+        pipeline = [
+            {"$group": {"_id": "$breed", "count": {"$sum": 1}}},
+            {"$sort": {"count": -1}}
+        ]
         try:
-            pipeline: List[Dict[str, Any]] = []
-
-            if match_filter:
-                self._validate_query(match_filter)
-                pipeline.append({"$match": match_filter})
-
-            pipeline.extend([
-                {"$group": {"_id": "$breed", "count": {"$sum": 1}}},
-                {"$sort": {"count": -1}}
-            ])
-
-            logger.info("Running breed distribution aggregation pipeline.")
-            return list(self.collection.aggregate(pipeline))
-        except (PyMongoError, AnimalShelterValidationError) as e:
-            logger.exception("Error aggregating breed distribution")
-            raise AnimalShelterAnalyticsError("Failed to aggregate breed distribution.") from e
-
-    def aggregate_outcome_distribution(self, match_filter: Dict[str, Any] | None = None) -> List[Dict[str, Any]]:
-        """
-        Return outcome distribution (e.g., Adoption, Transfer, etc.) using aggregation.
-        """
-        try:
-            pipeline: List[Dict[str, Any]] = []
-
-            if match_filter:
-                self._validate_query(match_filter)
-                pipeline.append({"$match": match_filter})
-
-            pipeline.extend([
-                {"$group": {"_id": "$outcome_type", "total": {"$sum": 1}}},
-                {"$sort": {"total": -1}}
-            ])
-
-            logger.info("Running outcome distribution aggregation pipeline.")
-            return list(self.collection.aggregate(pipeline))
-        except (PyMongoError, AnimalShelterValidationError) as e:
-            logger.exception("Error aggregating outcome distribution")
-            raise AnimalShelterAnalyticsError("Failed to aggregate outcome distribution.") from e
-
-    def aggregate_age_statistics(self, match_filter: Dict[str, Any] | None = None) -> List[Dict[str, Any]]:
-        """
-        Return basic age statistics (min, max, average) for age_upon_outcome_in_weeks.
-        """
-        try:
-            pipeline: List[Dict[str, Any]] = []
-
-            if match_filter:
-                self._validate_query(match_filter)
-                pipeline.append({"$match": match_filter})
-
-            pipeline.extend([
-                {
-                    "$group": {
-                        "_id": None,
-                        "min_age_weeks": {"$min": "$age_upon_outcome_in_weeks"},
-                        "max_age_weeks": {"$max": "$age_upon_outcome_in_weeks"},
-                        "avg_age_weeks": {"$avg": "$age_upon_outcome_in_weeks"},
-                    }
-                }
-            ])
-
-            logger.info("Running age statistics aggregation pipeline.")
-            return list(self.collection.aggregate(pipeline))
-        except (PyMongoError, AnimalShelterValidationError) as e:
-            logger.exception("Error aggregating age statistics")
-            raise AnimalShelterAnalyticsError("Failed to aggregate age statistics.") from e
-
-    def aggregate_rescue_availability(self) -> List[Dict[str, Any]]:
-        """
-        Return rescue availability statistics grouped by animal_type and outcome_type.
-        """
-        try:
-            pipeline = [
-                {
-                    "$group": {
-                        "_id": {
-                            "animal_type": "$animal_type",
-                            "outcome_type": "$outcome_type",
-                        },
-                        "count": {"$sum": 1},
-                    }
-                },
-                {"$sort": {"count": -1}}
-            ]
-
-            logger.info("Running rescue availability aggregation pipeline.")
             return list(self.collection.aggregate(pipeline))
         except PyMongoError as e:
-            logger.exception("Error aggregating rescue availability")
-            raise AnimalShelterAnalyticsError("Failed to aggregate rescue availability.") from e
+            logger.exception("Error running breed distribution aggregation")
+            raise AnimalShelterAggregationError("Breed distribution aggregation failed.") from e
+
+    # This function returns outcome statistics using a MongoDB aggregation pipeline
+    # Created by Andre Miranda
+    def aggregate_outcome_statistics(self) -> List[Dict[str, Any]]:
+        """Aggregate outcome type statistics."""
+        pipeline = [
+            {"$group": {"_id": "$outcome_type", "total": {"$sum": 1}}},
+            {"$sort": {"total": -1}}
+        ]
+        try:
+            return list(self.collection.aggregate(pipeline))
+        except PyMongoError as e:
+            logger.exception("Error running outcome statistics aggregation")
+            raise AnimalShelterAggregationError("Outcome statistics aggregation failed.") from e
+
+    # This function returns age statistics using a MongoDB aggregation pipeline
+    # Created by Andre Miranda
+    def aggregate_age_statistics(self) -> List[Dict[str, Any]]:
+        """Aggregate age statistics in weeks."""
+        pipeline = [
+            {
+                "$match": {
+                    "age_upon_outcome_in_weeks": {"$ne": None}
+                }
+            },
+            {
+                "$group": {
+                    "_id": None,
+                    "avg_weeks": {"$avg": "$age_upon_outcome_in_weeks"},
+                    "min_weeks": {"$min": "$age_upon_outcome_in_weeks"},
+                    "max_weeks": {"$max": "$age_upon_outcome_in_weeks"},
+                }
+            }
+        ]
+        try:
+            return list(self.collection.aggregate(pipeline))
+        except PyMongoError as e:
+            logger.exception("Error running age statistics aggregation")
+            raise AnimalShelterAggregationError("Age statistics aggregation failed.") from e
+
+    # This function returns rescue availability statistics using a MongoDB aggregation pipeline
+    # Created by Andre Miranda
+    def aggregate_rescue_availability(self) -> List[Dict[str, Any]]:
+        """Aggregate counts of animals by type and outcome."""
+        pipeline = [
+            {
+                "$group": {
+                    "_id": {
+                        "animal_type": "$animal_type",
+                        "outcome_type": "$outcome_type"
+                    },
+                    "total": {"$sum": 1}
+                }
+            },
+            {"$sort": {"total": -1}}
+        ]
+        try:
+            return list(self.collection.aggregate(pipeline))
+        except PyMongoError as e:
+            logger.exception("Error running rescue availability aggregation")
+            raise AnimalShelterAggregationError("Rescue availability aggregation failed.") from e
