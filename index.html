@@ -191,38 +191,6 @@
             document.body.classList.toggle("dark");
         });
 
-        /* Section Highlight on Scroll */
-        const sections = document.querySelectorAll("section");
-        const navLinks = document.querySelectorAll(".nav-right a");
-
-        // Underline updates immediately on click
-        navLinks.forEach(link => {
-            link.addEventListener("click", () => {
-                navLinks.forEach(l => l.classList.remove("active-link"));
-                link.classList.add("active-link");
-            });
-        });
-
-        window.addEventListener("scroll", () => {
-            let current = "";
-
-            sections.forEach(section => {
-                const rect = section.getBoundingClientRect();
-
-                // MUST match CSS scroll-margin-top
-                if (rect.top <= 90 && rect.bottom >= 90) {
-                    current = section.id;
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove("active-link");
-                if (link.getAttribute("href").includes(current)) {
-                    link.classList.add("active-link");
-                }
-            });
-        });
-
         /* Back to Top Button */
         const backToTop = document.getElementById("backToTop");
 
