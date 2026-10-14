@@ -1,6 +1,10 @@
 /* ---------------------------------------------------------
    GLOBAL STYLE
 --------------------------------------------------------- */
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -71,11 +75,17 @@ body.dark .navbar {
     font-size: 14px;
     padding: 2px 4px;
     white-space: nowrap;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.2s ease, border-bottom 0.2s ease;
 }
 
 .nav-right a:hover {
     opacity: 0.6;
+}
+
+/* Active section highlight */
+.active-link {
+    border-bottom: 2px solid #007aff;
+    padding-bottom: 2px;
 }
 
 /* ---------------------------------------------------------
@@ -173,6 +183,68 @@ h3 {
 
 .button:hover {
     background: #0062cc;
+}
+
+/* ---------------------------------------------------------
+   SKILLS MATRIX
+--------------------------------------------------------- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.skill-box {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+body.dark .skill-box {
+    background: #2c2c2e;
+}
+
+.skill-box h3 {
+    margin-top: 0;
+    font-size: 18px;
+}
+
+.skill-box ul {
+    padding-left: 20px;
+}
+
+/* ---------------------------------------------------------
+   APPLE-STYLE BACK TO TOP BUTTON
+--------------------------------------------------------- */
+#backToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(12px);
+    color: #1d1d1f;
+    border: 1px solid rgba(0,0,0,0.1);
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+    z-index: 9999;
+}
+
+#backToTop.show {
+    opacity: 1;
+    transform: translateY(-4px);
+}
+
+body.dark #backToTop {
+    background: rgba(40,40,40,0.75);
+    color: #f5f5f7;
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
 /* ---------------------------------------------------------
