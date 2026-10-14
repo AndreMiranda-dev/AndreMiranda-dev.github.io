@@ -1,3 +1,4 @@
+# Project Two Andre Miranda
 # CRUD_Python_Module.py
 
 from pymongo import MongoClient
@@ -40,7 +41,8 @@ class AnimalShelter(object):
 
     # Safe MongoDB operators
     SAFE_OPERATORS = {
-        "$in", "$gte", "$lte", "$gt", "$lt", "$eq", "$ne"
+        "$in", "$gte", "$lte", "$gt", "$lt", "$eq", "$ne", "$regex", "$options"
+
     }
 
     def __init__(self, username, password):
@@ -185,43 +187,36 @@ class AnimalShelter(object):
     # ---------------------------------------------------------
 
     def filter_water_rescue(self):
-        """Return dogs suitable for Water Rescue based on breed, sex, and age criteria."""
+        """Return dogs suitable for Water Rescue using regex breed matching."""
         query = {
-            "breed": {"$in": [
-                "Labrador Retriever Mix",
-                "Chesapeake Bay Retriever",
-                "Newfoundland"
-            ]},
+            "breed": {
+                "$regex": r"(labrador|lab|chesapeake|newfoundland)",
+                "$options": "i"
+            },
             "sex_upon_outcome": "Intact Female",
             "age_upon_outcome_in_weeks": {"$gte": 26, "$lte": 156}
         }
         return self.read(query)
 
     def filter_mountain_rescue(self):
-        """Return dogs suitable for Mountain/Wilderness Rescue."""
+        """Return dogs suitable for Mountain/Wilderness Rescue using regex breed matching."""
         query = {
-            "breed": {"$in": [
-                "German Shepherd",
-                "Alaskan Malamute",
-                "Old English Sheepdog",
-                "Siberian Husky",
-                "Rottweiler"
-            ]},
+            "breed": {
+                "$regex": r"(german|shepherd|malamute|sheepdog|husky|rottweiler)",
+                "$options": "i"
+            },
             "sex_upon_outcome": "Intact Male",
             "age_upon_outcome_in_weeks": {"$gte": 26, "$lte": 156}
         }
         return self.read(query)
 
     def filter_disaster_rescue(self):
-        """Return dogs suitable for Disaster/Tracking Rescue."""
+        """Return dogs suitable for Disaster/Tracking Rescue using regex breed matching."""
         query = {
-            "breed": {"$in": [
-                "Doberman Pinscher",
-                "German Shepherd",
-                "Golden Retriever",
-                "Bloodhound",
-                "Rottweiler"
-            ]},
+            "breed": {
+                "$regex": r"(doberman|pinscher|german|shepherd|golden|retriever|bloodhound|rottweiler)",
+                "$options": "i"
+            },
             "sex_upon_outcome": "Intact Male",
             "age_upon_outcome_in_weeks": {"$gte": 20, "$lte": 300}
         }
