@@ -215,25 +215,28 @@ body.dark .skill-box {
 }
 
 /* ---------------------------------------------------------
-   APPLE-STYLE BACK TO TOP BUTTON
+   BACK TO TOP BUTTON
 --------------------------------------------------------- */
 #backToTop {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    background: rgba(255,255,255,0.75);
-    backdrop-filter: blur(12px);
-    color: #1d1d1f;
-    border: 1px solid rgba(0,0,0,0.1);
-    padding: 12px 20px;
-    border-radius: 30px;
+    background: #007aff;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 12px;
     font-size: 15px;
     font-weight: 500;
     cursor: pointer;
     box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     opacity: 0;
-    transition: opacity 0.3s ease, transform 0.2s ease;
+    transition: opacity 0.3s ease, transform 0.2s ease, background 0.2s ease;
     z-index: 9999;
+}
+
+#backToTop:hover {
+    background: #0062cc;
 }
 
 #backToTop.show {
@@ -242,9 +245,11 @@ body.dark .skill-box {
 }
 
 body.dark #backToTop {
-    background: rgba(40,40,40,0.75);
-    color: #f5f5f7;
-    border: 1px solid rgba(255,255,255,0.1);
+    background: #0a84ff;
+}
+
+body.dark #backToTop:hover {
+    background: #0062cc;
 }
 
 /* ---------------------------------------------------------
