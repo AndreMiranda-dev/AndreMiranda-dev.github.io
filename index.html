@@ -97,10 +97,10 @@
         <!-- OTHER PROJECTS -->
         <section id="other-projects" class="card">
             <h2>Additional Projects</h2>
-            <p>These projects showcase additional work completed during my Computer Science program, demonstrating full‑stack development, software engineering, and continued growth beyond the CS‑499 capstone.</p>
+            <p>These projects showcase additional work completed during my Computer Science program.</p>
 
             <h3>CS‑465 Full Stack Development (MEAN)</h3>
-            <p>A full‑stack web application built using the MEAN stack (MongoDB, Express, Angular, Node.js).</p>
+            <p>A full‑stack web application built using the MEAN stack.</p>
             <a class="button" href="https://github.com/AndreMiranda-dev/cs465-fullstack" target="_blank">
                 View CS‑465 Full Stack Project
             </a>
@@ -197,10 +197,12 @@
 
         window.addEventListener("scroll", () => {
             let current = "";
+
             sections.forEach(section => {
-                const sectionTop = section.offsetTop - 120;
-                if (pageYOffset >= sectionTop) {
-                    current = section.getAttribute("id");
+                const rect = section.getBoundingClientRect();
+
+                if (rect.top <= 150 && rect.bottom >= 150) {
+                    current = section.id;
                 }
             });
 
