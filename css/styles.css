@@ -292,12 +292,6 @@ body.dark footer {
     margin: 0;
 }
 
-/* Keep the fifth button left aligned */
-.certification-grid .button:nth-child(5) {
-    grid-column: 1;
-    width: 100%;
-}
-
 /* Display one certification per row on smaller screens */
 @media (max-width: 650px) {
     .certification-grid {
@@ -309,5 +303,3 @@ body.dark footer {
         width: 100%;
     }
 }
-
-
