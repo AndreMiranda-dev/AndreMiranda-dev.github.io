@@ -1,191 +1,872 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Andre Miranda – My ePortfolio</title>
-    <link rel="stylesheet" href="css/styles.css">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Andre Miranda's computer science ePortfolio showcasing software engineering, algorithms and data structures, database development, and full-stack projects."
+    >
+
+    <meta
+        name="author"
+        content="Andre Miranda"
+    >
+
+    <meta
+        name="theme-color"
+        content="#f5f5f7"
+    >
+
+    <title>Andre Miranda | Software Engineering ePortfolio</title>
+
+    css/styles.css
 </head>
+
 
 <body>
 
-    <!-- NAVIGATION BAR -->
-    <nav class="navbar">
+    <!-- SKIP TO CONTENT -->
+    #main-content
+        Skip to main content
+    </a>
+
+
+    <!-- --------------------------------------------------
+         NAVIGATION BAR
+    --------------------------------------------------- -->
+    <nav
+        class="navbar"
+        aria-label="Primary navigation"
+    >
+
         <div class="nav-left">
-            <span class="nav-title">Andre Miranda</span>
-            <button id="darkToggle" class="dark-toggle">◐</button>
+
+            #top
+                Andre Miranda
+            </a>
+
+            <button
+                id="darkToggle"
+                class="icon-button dark-toggle"
+                type="button"
+                aria-label="Switch to dark mode"
+                aria-pressed="false"
+                title="Change color theme"
+            >
+                <span aria-hidden="true">◐</span>
+            </button>
+
         </div>
 
-        <div class="nav-right">
-            <a href="#self">Self‑Assessment</a>
-            <a href="#enhanced">Enhanced Artifacts</a>
-            <a href="#original">Original Artifacts</a>
-            <a href="#docs">Documentation</a>
-            <a href="#resume">Resume</a>
-            <a href="#certifications">Certifications</a>
-            <a href="#other-projects">Other Projects</a>
-            <a href="#blog">Blog</a>
-            <a href="#skills">Skills</a>
+
+        <!-- MOBILE MENU BUTTON -->
+        <button
+            id="menuToggle"
+            class="icon-button menu-toggle"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="primaryMenu"
+        >
+            <span aria-hidden="true">☰</span>
+        </button>
+
+
+        <!-- NAVIGATION LINKS -->
+        <div
+            id="primaryMenu"
+            class="nav-right"
+        >
+            #selfSelf-Assessment</a>
+            #enhancedEnhanced Artifacts</a>
+            #originalOriginal Artifacts</a>
+            #docsDocumentation</a>
+            #resumeResume</a>
+            #certificationsCertifications</a>
+            #other-projectsOther Projects</a>
+            #blogBlog</a>
+            #skillsSkills</a>
         </div>
+
     </nav>
 
-    <!-- HERO -->
-    <header class="hero">
-        <h1>My ePortfolio</h1>
-        <p>A polished showcase of my software engineering, algorithms, and database mastery.</p>
+
+    <!-- --------------------------------------------------
+         HERO
+    --------------------------------------------------- -->
+    <header
+        id="top"
+        class="hero"
+    >
+
+        <div class="hero-content">
+
+            <p class="eyebrow">
+                Computer Science ePortfolio
+            </p>
+
+            <h1>Andre Miranda</h1>
+
+            <p class="hero-subtitle">
+                Software Engineering • Algorithms & Data Structures • Database Development
+            </p>
+
+            <div
+                class="hero-actions"
+                aria-label="Featured actions"
+            >
+
+                #enhanced
+                    View My Work
+                </a>
+
+                #resume
+                    View Resume
+                </a>
+
+            </div>
+
+        </div>
+
     </header>
 
-    <main class="container">
 
-        <!-- SELF ASSESSMENT -->
-        <section id="self" class="card">
-            <h2>Professional Self‑Assessment</h2>
-            <p>A high‑level introduction to my background, strengths, and skills.</p>
-            <a class="button" href="artifacts/docs/Self_Assessment.pdf" target="_blank">View Self‑Assessment</a>
+    <!-- --------------------------------------------------
+         MAIN CONTENT
+    --------------------------------------------------- -->
+    <main
+        id="main-content"
+        class="container"
+    >
+
+
+        <!-- --------------------------------------------------
+             PROFESSIONAL SELF-ASSESSMENT
+        --------------------------------------------------- -->
+        <section
+            id="self"
+            class="card"
+        >
+
+            <div class="section-heading">
+
+                <p class="eyebrow">
+                    Professional Overview
+                </p>
+
+                <h2>
+                    Professional Self-Assessment
+                </h2>
+
+                <p>
+                    A high-level introduction to my background, strengths,
+                    accomplishments, and growth throughout the Computer Science
+                    program.
+                </p>
+
+            </div>
+
+
+            artifacts/docs/Self_Assessment.pdf
+                View Self-Assessment
+            </a>
+
         </section>
 
-        <!-- ENHANCED ARTIFACTS -->
-        <section id="enhanced" class="card">
-            <h2>Enhanced Artifacts</h2>
 
-            <h3>Enhanced CRUD Module</h3>
-            <p>Refactored CRUD module with custom exceptions, logging, validation, indexing, and secure authentication.</p>
-            <a class="button" href="https://github.com/AndreMiranda-dev/AndreMiranda-dev.github.io/blob/main/artifacts/enhanced/CRUD_Python_Module.py" target="_blank">
-                Enhanced CRUD Module (View Code)
-            </a>
+        <!-- --------------------------------------------------
+             ENHANCED ARTIFACTS
+        --------------------------------------------------- -->
+        <section
+            id="enhanced"
+            class="card"
+        >
 
-            <h3>Enhanced Dashboard</h3>
-            <p>Interactive Dash dashboard with rescue filters, map integration, analytics, KPIs, and normalized breed scoring.</p>
-            <a class="button" href="https://github.com/AndreMiranda-dev/AndreMiranda-dev.github.io/blob/main/artifacts/enhanced/Dashboard.ipynb" target="_blank">
-                Enhanced Dashboard (View Notebook)
-            </a>
+            <div class="section-heading">
 
-            <h3>Rescue Scoring Engine</h3>
-            <p>Weighted scoring engine using regex normalization, caching, and multi‑factor suitability scoring.</p>
-            <a class="button" href="https://github.com/AndreMiranda-dev/AndreMiranda-dev.github.io/blob/main/artifacts/enhanced/rescue_scoring.py" target="_blank">
-                Scoring Engine (View Code)
-            </a>
+                <p class="eyebrow">
+                    Featured Work
+                </p>
 
-            <h3>Login Page</h3>
-            <p>Secure credential retrieval for MongoDB authentication.</p>
-            <a class="button" href="https://github.com/AndreMiranda-dev/AndreMiranda-dev.github.io/blob/main/artifacts/enhanced/login_page.py" target="_blank">
-                Login Page (View Code)
-            </a>
+                <h2>
+                    Enhanced Artifacts
+                </h2>
 
-            <h3>Enhanced Test Suite</h3>
-            <p>Full coverage test suite validating CRUD operations, scoring engine, aggregation pipelines, and edge cases.</p>
-            <a class="button" href="https://github.com/AndreMiranda-dev/AndreMiranda-dev.github.io/blob/main/artifacts/enhanced/Test_Script.ipynb" target="_blank">
-                Enhanced Test Script (View Notebook)
-            </a>
+                <p>
+                    These enhancements demonstrate growth across the three
+                    core Computer Science capstone categories.
+                </p>
+
+            </div>
+
+
+            <div class="project-grid">
+
+
+                <!-- ENHANCED CRUD MODULE -->
+                <article class="project-card">
+
+                    <p class="project-category">
+                        Software Design & Engineering
+                    </p>
+
+                    <h3>
+                        Enhanced CRUD Module
+                    </h3>
+
+                    <div
+                        class="tag-list"
+                        aria-label="Technologies"
+                    >
+                        <span class="tag">Python</span>
+                        <span class="tag">MongoDB</span>
+                        <span class="tag">Logging</span>
+                        <span class="tag">Authentication</span>
+                    </div>
+
+                    <p>
+                        Refactored CRUD module with custom exceptions,
+                        logging, validation, indexing, and secure authentication.
+                    </p>
+
+                    <div class="project-actions">
+
+                        <a
+                            class="btn btn-primary"
+                            href="https://github.com/AndreMiranda-dev/AndreMiranda-dev.github.io/blob/main/artifacts/enhanced/CRUD\_Python\_Module.py"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            View Code
+                        </a>
+
+                        artifacts/docs/Artifact Narrative - Enhanced CRUD Module.pdf
+                            View Narrative
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- RESCUE SCORING ENGINE -->
+                <article class="project-card">
+
+                    <p class="project-category">
+                        Algorithms & Data Structures
+                    </p>
+
+                    <h3>
+                        Rescue Scoring Engine
+                    </h3>
+
+                    <div
+                        class="tag-list"
+                        aria-label="Technologies"
+                    >
+                        <span class="tag">Python</span>
+                        <span class="tag">Regex</span>
+                        <span class="tag">LRU Caching</span>
+                        <span class="tag">Weighted Scoring</span>
+                    </div>
+
+                    <p>
+                        Weighted scoring engine using regex normalization,
+                        caching, and multi-factor suitability scoring.
+                    </p>
+
+                    <div class="project-actions">
+
+                        <a
+                            class="btn btn-primary"
+                            href="https://github.com/AndreMiranda-dev/AndreMiranda-dev.github.io/blob/main/artifacts/enhanced/rescue\_scoring.py"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            View Code
+                        </a>
+
+                        artifacts/docs/Artifact Narrative – Rescue Suitability Scoring Engine.pdf
+                            View Narrative
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ENHANCED DASHBOARD -->
+                <article class="project-card">
+
+                    <p class="project-category">
+                        Databases
+                    </p>
+
+                    <h3>
+                        Enhanced Dashboard
+                    </h3>
+
+                    <div
+                        class="tag-list"
+                        aria-label="Technologies"
+                    >
+                        <span class="tag">Python</span>
+                        <span class="tag">Dash</span>
+                        <span class="tag">MongoDB</span>
+                        <span class="tag">Aggregation</span>
+                    </div>
+
+                    <p>
+                        Interactive Dash dashboard with rescue filters,
+                        map integration, analytics, KPIs, and normalized
+                        breed scoring.
+                    </p>
+
+                    <div class="project-actions">
+
+                        <a
+                            class="btn btn-primary"
+                            href="https://github.com/AndreMiranda-dev/AndreMiranda-dev.github.io/blob/main/artifacts/enhanced/Dashboard.ipynb"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            View Notebook
+                        </a>
+
+                        artifacts/docs/Artifact Narrative – Enhanced Dashboard & MongoDB Integration.pdf
+                            View Narrative
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- LOGIN PAGE -->
+                <article class="project-card">
+
+                    <p class="project-category">
+                        Supporting Component
+                    </p>
+
+                    <h3>
+                        Login Page
+                    </h3>
+
+                    <div
+                        class="tag-list"
+                        aria-label="Technologies"
+                    >
+                        <span class="tag">Python</span>
+                        <span class="tag">MongoDB</span>
+                        <span class="tag">Authentication</span>
+                    </div>
+
+                    <p>
+                        Secure credential retrieval for MongoDB authentication.
+                    </p>
+
+                    <div class="project-actions">
+
+                        <a
+                            class="btn btn-primary"
+                            href="https://github.com/AndreMiranda-dev/AndreMiranda-dev.github.io/blob/main/artifacts/enhanced/login\_page.py"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            View Code
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ENHANCED TEST SUITE -->
+                <article class="project-card">
+
+                    <p class="project-category">
+                        Quality Assurance
+                    </p>
+
+                    <h3>
+                        Enhanced Test Suite
+                    </h3>
+
+                    <div
+                        class="tag-list"
+                        aria-label="Technologies"
+                    >
+                        <span class="tag">Python</span>
+                        <span class="tag">Testing</span>
+                        <span class="tag">Edge Cases</span>
+                        <span class="tag">Validation</span>
+                    </div>
+
+                    <p>
+                        Full-coverage test suite validating CRUD operations,
+                        the scoring engine, aggregation pipelines, and edge cases.
+                    </p>
+
+                    <div class="project-actions">
+
+                        <a
+                            class="btn btn-primary"
+                            href="https://github.com/AndreMiranda-dev/AndreMiranda-dev.github.io/blob/main/artifacts/enhanced/Test\_Script.ipynb"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            View Notebook
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
         </section>
 
-        <!-- ORIGINAL ARTIFACTS -->
-        <section id="original" class="card">
-            <h2>Original Artifacts</h2>
-            <p>These files represent the starting point before enhancements.</p>
 
-            <a class="button" href="https://github.com/AndreMiranda-dev/AndreMiranda-dev.github.io/blob/main/artifacts/original/CRUD_original.py" target="_blank">
-                Original CRUD Module (View Code)
-            </a>
+        <!-- --------------------------------------------------
+             ORIGINAL ARTIFACTS
+        --------------------------------------------------- -->
+        <section
+            id="original"
+            class="card"
+        >
 
-            <a class="button" href="https://github.com/AndreMiranda-dev/AndreMiranda-dev.github.io/blob/main/artifacts/original/Dashboard_original.ipynb" target="_blank">
-                Original Dashboard (View Notebook)
-            </a>
+            <div class="section-heading">
 
-            <a class="button" href="https://github.com/AndreMiranda-dev/AndreMiranda-dev.github.io/blob/main/artifacts/original/Test_Script_original.ipynb" target="_blank">
-                Original Test Script (View Notebook)
-            </a>
+                <p class="eyebrow">
+                    Before Enhancement
+                </p>
+
+                <h2>
+                    Original Artifacts
+                </h2>
+
+                <p>
+                    These files represent the starting point before the
+                    capstone enhancements were completed.
+                </p>
+
+            </div>
+
+
+            <div class="button-grid">
+
+                <a
+                    class="btn btn-primary"
+                    href="https://github.com/AndreMiranda-dev/AndreMiranda-dev.github.io/blob/main/artifacts/original/CRUD\_original.py"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Original CRUD Module
+                </a>
+
+                <a
+                    class="btn btn-primary"
+                    href="https://github.com/AndreMiranda-dev/AndreMiranda-dev.github.io/blob/main/artifacts/original/Dashboard\_original.ipynb"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Original Dashboard
+                </a>
+
+                <a
+                    class="btn btn-primary"
+                    href="https://github.com/AndreMiranda-dev/AndreMiranda-dev.github.io/blob/main/artifacts/original/Test\_Script\_original.ipynb"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Original Test Script
+                </a>
+
+            </div>
+
         </section>
 
-        <!-- DOCUMENTATION -->
-        <section id="docs" class="card">
-            <h2>Documentation</h2>
-            <p>Supporting documentation.</p>
 
-            <a class="button" href="artifacts/docs/Enhancement_Summary.pdf" target="_blank">Enhancement Summary</a>
+        <!-- --------------------------------------------------
+             DOCUMENTATION
+        --------------------------------------------------- -->
+        <section
+            id="docs"
+            class="card"
+        >
 
-            <a class="button" href="https://1drv.ms/v/c/e349d8b310f9a758/IQCgj5yxxLt2RoXUx8DsC6xMARKVs4cC8WXc1Deqz9q7OPQ?e=Kxp5zS" target="_blank">
-                Code Review Video
-            </a>
+            <div class="section-heading">
 
-            <a class="button" href="artifacts/docs/Artifact Narrative - Enhanced CRUD Module.pdf" target="_blank">Artifact Narrative - Enhanced CRUD Module</a>
-            <a class="button" href="artifacts/docs/Artifact Narrative – Rescue Suitability Scoring Engine.pdf" target="_blank">Artifact Narrative – Rescue Suitability Scoring Engine</a>
-            <a class="button" href="artifacts/docs/Artifact Narrative – Enhanced Dashboard & MongoDB Integration.pdf" target="_blank">Artifact Narrative – Enhanced Dashboard & MongoDB Integration</a>
+                <p class="eyebrow">
+                    Supporting Materials
+                </p>
+
+                <h2>
+                    Documentation
+                </h2>
+
+                <p>
+                    Supporting documentation for the capstone enhancements,
+                    review process, and artifact narratives.
+                </p>
+
+            </div>
+
+
+            <div class="button-grid">
+
+                artifacts/docs/Enhancement_Summary.pdf
+                    Enhancement Summary
+                </a>
+
+                <a
+                    class="btn btn-primary"
+                    href="https://1drv.ms/v/c/e349d8b310f9a758/IQCgj5yxxLt2RoXUx8DsC6xMARKVs4cC8WXc1Deqz9q7OPQ?e=Kxp5zS"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Code Review Video
+                </a>
+
+                artifacts/docs/Artifact Narrative - Enhanced CRUD Module.pdf
+                    CRUD Module Narrative
+                </a>
+
+                artifacts/docs/Artifact Narrative – Rescue Suitability Scoring Engine.pdf
+                    Scoring Engine Narrative
+                </a>
+
+                artifacts/docs/Artifact Narrative – Enhanced Dashboard & MongoDB Integration.pdf
+                    Dashboard Narrative
+                </a>
+
+            </div>
+
         </section>
 
-        <!-- RESUME -->
-        <section id="resume" class="card">
-            <h2>Resume</h2>
-            <p>You can download my professional resume below.</p>
-            <a class="button" href="artifacts/docs/Andre_Miranda_Resume.pdf" target="_blank">Download Resume</a>
-            <a class="button" href="https://www.linkedin.com/in/andre-miranda-mba-37589a241/" target="_blank">LinkedIn Profile</a>
+
+        <!-- --------------------------------------------------
+             RESUME
+        --------------------------------------------------- -->
+        <section
+            id="resume"
+            class="card"
+        >
+
+            <div class="section-heading">
+
+                <p class="eyebrow">
+                    Professional Experience
+                </p>
+
+                <h2>
+                    Resume
+                </h2>
+
+                <p>
+                    View my professional resume and connect with me on LinkedIn.
+                </p>
+
+            </div>
+
+
+            <div class="inline-actions">
+
+                artifacts/docs/Andre_Miranda_Resume.pdf
+                    View Resume
+                </a>
+
+                <a
+                    class="btn btn-secondary"
+                    href="https://www.linkedin.com/in/andre-miranda-mba-37589a241/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    LinkedIn Profile
+                </a>
+
+            </div>
+
         </section>
 
-        <!-- Certifications -->
-        <section id="certifications" class="card">
-            <h2>Certifications</h2>
-        
-            <p>
-                You can view and verify my professional certifications below.
-                Please use "andremiranda2011c@outlook.com" as the "Recipient Email Address".
-            </p>
-        
+
+        <!-- --------------------------------------------------
+             CERTIFICATIONS
+        --------------------------------------------------- -->
+        <section
+            id="certifications"
+            class="card"
+        >
+
+            <div class="section-heading">
+
+                <p class="eyebrow">
+                    Professional Development
+                </p>
+
+                <h2>
+                    Certifications
+                </h2>
+
+                <p>
+                    You can view and verify my professional certifications below.
+                    Please use
+                    <strong>andremiranda2011c@outlook.com</strong>
+                    as the Recipient Email Address.
+                </p>
+
+            </div>
+
+
             <div class="certification-grid">
-                <a class="button" href="https://scrum.org/certifcates/1182992" target="_blank">
+
+                <a
+                    class="btn btn-primary"
+                    href="https://scrum.org/certifcates/1182992"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     Professional Scrum Master I (PSM I)
                 </a>
-        
-                <a class="button" href="https://scrum.org/certifcates/1269367" target="_blank">
+
+                <a
+                    class="btn btn-primary"
+                    href="https://scrum.org/certifcates/1269367"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     Professional Scrum Master II (PSM II)
                 </a>
-        
-                <a class="button" href="https://scrum.org/certifcates/1151340" target="_blank">
+
+                <a
+                    class="btn btn-primary"
+                    href="https://scrum.org/certifcates/1151340"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     Professional Scrum Product Owner I (PSPO I)
                 </a>
-        
-                <a class="button" href="https://scrum.org/certifcates/1152722" target="_blank">
+
+                <a
+                    class="btn btn-primary"
+                    href="https://scrum.org/certifcates/1152722"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     Professional Scrum Product Owner II (PSPO II)
                 </a>
-        
-                <a class="button" href="https://scrum.org/certifcates/1154258" target="_blank">
+
+                <a
+                    class="btn btn-primary"
+                    href="https://scrum.org/certifcates/1154258"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     Professional Scrum Product Backlog Management Skills (PSPBM)
                 </a>
+
             </div>
+
         </section>
 
 
-        <!-- OTHER PROJECTS -->
-        <section id="other-projects" class="card">
-            <h2>Additional Projects</h2>
-            <p>These projects showcase additional work completed during and outside of my Computer Science program.</p>
+        <!-- --------------------------------------------------
+             ADDITIONAL PROJECTS
+        --------------------------------------------------- -->
+        <section
+            id="other-projects"
+            class="card"
+        >
 
-            <h3>Full Stack Development (MEAN)</h3>
-            <p>A full‑stack web application built using the MEAN stack.</p>
-            <a class="button" href="https://github.com/AndreMiranda-dev/cs465-fullstack" target="_blank">
-                View Full Stack Project
+            <div class="section-heading">
+
+                <p class="eyebrow">
+                    Additional Experience
+                </p>
+
+                <h2>
+                    Additional Projects
+                </h2>
+
+                <p>
+                    These projects showcase work completed during and outside
+                    of my Computer Science program.
+                </p>
+
+            </div>
+
+
+            <div class="project-grid project-grid-two">
+
+
+                <!-- FULL STACK PROJECT -->
+                <article class="project-card">
+
+                    <p class="project-category">
+                        Full-Stack Development
+                    </p>
+
+                    <h3>
+                        MEAN Stack Application
+                    </h3>
+
+                    <div
+                        class="tag-list"
+                        aria-label="Technologies"
+                    >
+                        <span class="tag">MongoDB</span>
+                        <span class="tag">Express</span>
+                        <span class="tag">Angular</span>
+                        <span class="tag">Node.js</span>
+                    </div>
+
+                    <p>
+                        A full-stack web application built using the MEAN stack.
+                    </p>
+
+                    <div class="project-actions">
+
+                        <a
+                            class="btn btn-primary"
+                            href="https://github.com/AndreMiranda-dev/cs465-fullstack"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            View Full-Stack Project
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PROGRAM PROJECTS -->
+                <article class="project-card">
+
+                    <p class="project-category">
+                        Computer Science
+                    </p>
+
+                    <h3>
+                        Program Projects
+                    </h3>
+
+                    <div
+                        class="tag-list"
+                        aria-label="Technologies"
+                    >
+                        <span class="tag">Software Engineering</span>
+                        <span class="tag">Algorithms</span>
+                        <span class="tag">Databases</span>
+                    </div>
+
+                    <p>
+                        A collection of projects completed throughout my
+                        Computer Science degree.
+                    </p>
+
+                    <div class="project-actions">
+
+                        <a
+                            class="btn btn-primary"
+                            href="https://github.com/AndreMiranda-dev/CS-Program"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            View Project Repository
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- --------------------------------------------------
+             BLOG
+        --------------------------------------------------- -->
+        <section
+            id="blog"
+            class="card"
+        >
+
+            <div class="section-heading">
+
+                <p class="eyebrow">
+                    Technical Writing
+                </p>
+
+                <h2>
+                    Byte By Andre
+                </h2>
+
+                <p>
+                    I write about software engineering, full-stack development,
+                    MongoDB, algorithms, UI/UX, and my journey in technology.
+                </p>
+
+            </div>
+
+
+            <a
+                class="btn btn-primary"
+                href="https://bytebyandre.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Visit My Blog
             </a>
 
-            <h3>Additional Program Projects</h3>
-            <p>A collection of projects completed throughout my Computer Science degree.</p>
-            <a class="button" href="https://github.com/AndreMiranda-dev/CS-Program" target="_blank">
-                View Project Repository
-            </a>
         </section>
 
-        <!-- BLOG -->
-        <section id="blog" class="card">
-            <h2>My Blog – Byte By Andre</h2>
-            <p>I write about software engineering, full‑stack development, MongoDB, algorithms, UI/UX, and my journey in tech.</p>
-            <a class="button" href="https://bytebyandre.com/" target="_blank">Visit My Blog</a>
-        </section>
 
-        <!-- SKILLS MATRIX -->
-        <section id="skills" class="card">
-            <h2>Skills Matrix</h2>
-            <p>A summary of my core technical skills developed throughout my career.</p>
+        <!-- --------------------------------------------------
+             SKILLS MATRIX
+        --------------------------------------------------- -->
+        <section
+            id="skills"
+            class="card"
+        >
+
+            <div class="section-heading">
+
+                <p class="eyebrow">
+                    Technical Capabilities
+                </p>
+
+                <h2>
+                    Skills Matrix
+                </h2>
+
+                <p>
+                    A summary of the core technical skills developed throughout
+                    my education, projects, and career.
+                </p>
+
+            </div>
+
 
             <div class="skills-grid">
-                <div class="skill-box">
-                    <h3>Software Engineering</h3>
+
+
+                <!-- SOFTWARE ENGINEERING -->
+                <article class="skill-box">
+
+                    <h3>
+                        Software Engineering
+                    </h3>
+
                     <ul>
                         <li>Python</li>
                         <li>C++</li>
@@ -194,72 +875,415 @@
                         <li>Logging & Exception Handling</li>
                         <li>Secure Coding Practices</li>
                     </ul>
-                </div>
 
-                <div class="skill-box">
-                    <h3>Algorithms & Data Structures</h3>
+                </article>
+
+
+                <!-- ALGORITHMS -->
+                <article class="skill-box">
+
+                    <h3>
+                        Algorithms & Data Structures
+                    </h3>
+
                     <ul>
                         <li>Regex Normalization</li>
-                        <li>Caching (LRU)</li>
+                        <li>LRU Caching</li>
                         <li>Sorting & Ranking Algorithms</li>
                         <li>Complexity Optimization</li>
                     </ul>
-                </div>
 
-                <div class="skill-box">
-                    <h3>Databases</h3>
+                </article>
+
+
+                <!-- DATABASES -->
+                <article class="skill-box">
+
+                    <h3>
+                        Databases
+                    </h3>
+
                     <ul>
                         <li>MongoDB</li>
                         <li>Aggregation Pipelines</li>
                         <li>Schema Validation</li>
                         <li>Index Optimization</li>
                     </ul>
-                </div>
 
-                <div class="skill-box">
-                    <h3>Full‑Stack Development</h3>
+                </article>
+
+
+                <!-- FULL STACK -->
+                <article class="skill-box">
+
+                    <h3>
+                        Full-Stack Development
+                    </h3>
+
                     <ul>
                         <li>MEAN Stack</li>
                         <li>RESTful APIs</li>
                         <li>Authentication</li>
                         <li>Deployment</li>
                     </ul>
-                </div>
+
+                </article>
+
+
+                <!-- DEVELOPMENT TOOLS -->
+                <article class="skill-box">
+
+                    <h3>
+                        Development Tools
+                    </h3>
+
+                    <ul>
+                        <li>Git & GitHub</li>
+                        <li>Visual Studio Code</li>
+                        <li>Jupyter Notebook</li>
+                        <li>Version Control Workflows</li>
+                    </ul>
+
+                </article>
+
             </div>
+
         </section>
 
+
         <!-- BACK TO TOP BUTTON -->
-        <button id="backToTop">↑ Top</button>
+        <button
+            id="backToTop"
+            type="button"
+            aria-label="Back to top"
+        >
+            ↑ Top
+        </button>
 
     </main>
 
+
+    <!-- --------------------------------------------------
+         FOOTER
+    --------------------------------------------------- -->
     <footer>
-        © 2026 Andre Miranda • My ePortfolio
+
+        <p>
+            © <span id="currentYear"></span>
+            Andre Miranda • Software Engineering ePortfolio
+        </p>
+
     </footer>
 
-    <!-- JAVASCRIPT -->
+
+    <!-- --------------------------------------------------
+         JAVASCRIPT
+         Intentionally kept inside index.html
+    --------------------------------------------------- -->
     <script>
-        /* Dark Mode Toggle */
-        const toggle = document.getElementById("darkToggle");
-        toggle.addEventListener("click", () => {
-            document.body.classList.toggle("dark");
-        });
 
-        /* Back to Top Button */
-        const backToTop = document.getElementById("backToTop");
+        /* --------------------------------------------------
+           ELEMENT REFERENCES
+        --------------------------------------------------- */
+        const body = document.body;
 
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > 400) {
-                backToTop.classList.add("show");
-            } else {
-                backToTop.classList.remove("show");
+        const darkToggle =
+            document.getElementById("darkToggle");
+
+        const menuToggle =
+            document.getElementById("menuToggle");
+
+        const primaryMenu =
+            document.getElementById("primaryMenu");
+
+        const backToTop =
+            document.getElementById("backToTop");
+
+        const themeColor =
+            document.querySelector('meta[name="theme-color"]');
+
+        const desktopMenuBreakpoint = 900;
+
+
+        /* --------------------------------------------------
+           DARK MODE
+        --------------------------------------------------- */
+        function applyTheme(theme) {
+
+            const darkModeEnabled =
+                theme === "dark";
+
+            body.classList.toggle(
+                "dark",
+                darkModeEnabled
+            );
+
+            darkToggle.setAttribute(
+                "aria-pressed",
+                String(darkModeEnabled)
+            );
+
+            darkToggle.setAttribute(
+                "aria-label",
+                darkModeEnabled
+                    ? "Switch to light mode"
+                    : "Switch to dark mode"
+            );
+
+            themeColor.setAttribute(
+                "content",
+                darkModeEnabled
+                    ? "#1c1c1e"
+                    : "#f5f5f7"
+            );
+        }
+
+
+        /* --------------------------------------------------
+           LOAD SAVED OR SYSTEM THEME
+        --------------------------------------------------- */
+        const savedTheme =
+            localStorage.getItem("theme");
+
+        const preferredTheme =
+            window.matchMedia(
+                "(prefers-color-scheme: dark)"
+            ).matches
+                ? "dark"
+                : "light";
+
+        applyTheme(
+            savedTheme || preferredTheme
+        );
+
+
+        /* --------------------------------------------------
+           DARK MODE BUTTON
+        --------------------------------------------------- */
+        darkToggle.addEventListener(
+            "click",
+            () => {
+
+                const nextTheme =
+                    body.classList.contains("dark")
+                        ? "light"
+                        : "dark";
+
+                applyTheme(nextTheme);
+
+                localStorage.setItem(
+                    "theme",
+                    nextTheme
+                );
             }
-        });
+        );
 
-        backToTop.addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        });
+
+        /* --------------------------------------------------
+           MOBILE NAVIGATION
+        --------------------------------------------------- */
+        function closeMobileMenu() {
+
+            primaryMenu.classList.remove(
+                "open"
+            );
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            menuToggle.setAttribute(
+                "aria-label",
+                "Open navigation menu"
+            );
+        }
+
+
+        menuToggle.addEventListener(
+            "click",
+            () => {
+
+                const isOpen =
+                    primaryMenu.classList.toggle(
+                        "open"
+                    );
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    String(isOpen)
+                );
+
+                menuToggle.setAttribute(
+                    "aria-label",
+                    isOpen
+                        ? "Close navigation menu"
+                        : "Open navigation menu"
+                );
+            }
+        );
+
+
+        /* Close menu after a navigation link is selected */
+        primaryMenu
+            .querySelectorAll("a")
+            .forEach((link) => {
+
+                link.addEventListener(
+                    "click",
+                    closeMobileMenu
+                );
+
+            });
+
+
+        /* Reset mobile menu when returning to desktop */
+        window.addEventListener(
+            "resize",
+            () => {
+
+                if (
+                    window.innerWidth >
+                    desktopMenuBreakpoint
+                ) {
+                    closeMobileMenu();
+                }
+            }
+        );
+
+
+        /* --------------------------------------------------
+           BACK TO TOP BUTTON
+        --------------------------------------------------- */
+        window.addEventListener(
+            "scroll",
+            () => {
+
+                backToTop.classList.toggle(
+                    "show",
+                    window.scrollY > 400
+                );
+
+            }
+        );
+
+
+        backToTop.addEventListener(
+            "click",
+            () => {
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+
+            }
+        );
+
+
+        /* --------------------------------------------------
+           AUTOMATIC FOOTER YEAR
+        --------------------------------------------------- */
+        document.getElementById(
+            "currentYear"
+        ).textContent =
+            new Date().getFullYear();
+
+
+        /* --------------------------------------------------
+           ACTIVE NAVIGATION SECTION
+        --------------------------------------------------- */
+        const navigationLinks =
+            document.querySelectorAll(
+                '.nav-right a[href^="#"]'
+            );
+
+
+        const observedSections =
+            [...navigationLinks]
+
+                .map((link) =>
+                    document.querySelector(
+                        link.getAttribute("href")
+                    )
+                )
+
+                .filter(Boolean);
+
+
+        const sectionObserver =
+            new IntersectionObserver(
+
+                (entries) => {
+
+                    entries.forEach(
+                        (entry) => {
+
+                            if (
+                                !entry.isIntersecting
+                            ) {
+                                return;
+                            }
+
+
+                            navigationLinks.forEach(
+                                (link) => {
+
+                                    const isActive =
+                                        link.getAttribute(
+                                            "href"
+                                        ) ===
+                                        `#${entry.target.id}`;
+
+
+                                    link.classList.toggle(
+                                        "active-link",
+                                        isActive
+                                    );
+
+
+                                    if (isActive) {
+
+                                        link.setAttribute(
+                                            "aria-current",
+                                            "location"
+                                        );
+
+                                    } else {
+
+                                        link.removeAttribute(
+                                            "aria-current"
+                                        );
+
+                                    }
+
+                                }
+                            );
+
+                        }
+                    );
+
+                },
+
+                {
+                    rootMargin:
+                        "-30% 0px -60% 0px",
+
+                    threshold: 0
+                }
+
+            );
+
+
+        observedSections.forEach(
+            (section) =>
+                sectionObserver.observe(
+                    section
+                )
+        );
+
     </script>
 
 </body>
+
 </html>
