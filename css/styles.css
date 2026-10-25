@@ -275,17 +275,18 @@ body.dark footer {
    CERTIFICATION BUTTONS
 --------------------------------------------------------- */
 .certification-grid {
-    display: grid;
-    grid-template-columns: repeat(2, max-content);
+    display: flex;
+    flex-wrap: wrap;
     gap: 12px;
     margin-top: 10px;
-    align-items: start;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
 .certification-grid .button {
-    display: inline-block;
-    width: fit-content;
-    justify-self: start;
+    display: inline-flex;
+    flex: 0 0 auto;
+    width: auto;
     padding: 12px 22px;
     background: #007aff;
     color: white;
@@ -302,14 +303,14 @@ body.dark footer {
     background: #0062cc;
 }
 
-/* Display one certification per row on smaller screens */
+/* Stack certification buttons on smaller screens */
 @media (max-width: 650px) {
     .certification-grid {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .certification-grid .button {
-        width: fit-content;
-        justify-self: start;
+        width: auto;
     }
 }
