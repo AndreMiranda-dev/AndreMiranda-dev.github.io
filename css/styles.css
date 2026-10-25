@@ -271,49 +271,42 @@ body.dark footer {
     color: #d1d1d6;
 }
 
+
 /* ---------------------------------------------------------
    CERTIFICATION BUTTONS
 --------------------------------------------------------- */
-#certifications {
+.certification-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
+    margin-top: 10px;
 }
 
-#certifications h2,
-#certifications p {
-    grid-column: 1 / -1;
-}
-
-#certifications .button {
+.certification-grid .button {
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin: 0;
     box-sizing: border-box;
+    width: 100%;
+    margin: 0;
 }
 
-/* Center the last certification when there is an odd number */
-#certifications .button:last-child {
+/* Center the fifth button */
+.certification-grid .button:nth-child(5) {
     grid-column: 1 / -1;
     width: calc(50% - 6px);
     justify-self: center;
 }
 
-/* Stack certification buttons on smaller screens */
+/* Display one certification per row on smaller screens */
 @media (max-width: 650px) {
-    #certifications {
+    .certification-grid {
         grid-template-columns: 1fr;
     }
 
-    #certifications h2,
-    #certifications p,
-    #certifications .button:last-child {
-        grid-column: 1;
-    }
-
-    #certifications .button:last-child {
+    .certification-grid .button:nth-child(5) {
+        grid-column: auto;
         width: 100%;
     }
 }
