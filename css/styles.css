@@ -292,11 +292,10 @@ body.dark footer {
     margin: 0;
 }
 
-/* Center the fifth button */
+/* Keep the fifth button left aligned */
 .certification-grid .button:nth-child(5) {
-    grid-column: 1 / -1;
-    width: calc(50% - 6px);
-    justify-self: center;
+    grid-column: 1;
+    width: 100%;
 }
 
 /* Display one certification per row on smaller screens */
