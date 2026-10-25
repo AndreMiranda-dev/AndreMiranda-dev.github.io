@@ -270,3 +270,52 @@ footer {
 body.dark footer {
     color: #d1d1d6;
 }
+
+/* ---------------------------------------------------------
+   CERTIFICATION BUTTONS
+--------------------------------------------------------- */
+#certifications {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+#certifications h2,
+#certifications p {
+    grid-column: 1 / -1;
+}
+
+#certifications .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Center the last certification when there is an odd number */
+#certifications .button:last-child {
+    grid-column: 1 / -1;
+    width: calc(50% - 6px);
+    justify-self: center;
+}
+
+/* Stack certification buttons on smaller screens */
+@media (max-width: 650px) {
+    #certifications {
+        grid-template-columns: 1fr;
+    }
+
+    #certifications h2,
+    #certifications p,
+    #certifications .button:last-child {
+        grid-column: 1;
+    }
+
+    #certifications .button:last-child {
+        width: 100%;
+    }
+}
+
+
